@@ -67,6 +67,14 @@ private int setNum = 0;
     }
 
     private void createButtons(){
+        redHitPctView = (TextView)findViewById(R.id.redHitPct);
+        redPassAvgView = (TextView)findViewById(R.id.redPassAvg);
+        redEarnedPctView = (TextView)findViewById(R.id.redEarnedPct);
+        blueHitPctView = (TextView)findViewById(R.id.blueHitPct);
+        bluePassAvgView = (TextView)findViewById(R.id.bluePassAvg);
+        blueEarnedPctView = (TextView)findViewById(R.id.blueEarnedPct);
+
+
         redScoreButton = (Button)findViewById(R.id.redScore);
         redScoreButton.setOnClickListener(this);
         redAceButton = (Button)findViewById(R.id.redAce);
@@ -163,6 +171,66 @@ private int setNum = 0;
         blueOneButton.setText("1SR\n" + set.getBlueOne());
         blueTwoButton.setText("2SR\n" + set.getBlueTwo());
         blueThreeButton.setText("3SR\n" + set.getBlueThree());
+
+        updatePercents();
+    }
+
+    public void updatePercents(){
+// red hit % calculation
+        if (set.getRedAttack() != 0) {
+            double redPct = (set.getRedStats().get("Kill") - set.getBlueStats().get("Opponent Attack Err")) / (double) set.getRedAttack();
+
+            redHitPctView.setText("Hit % " + String.format("%.3f", redPct));
+        }
+        else{
+            redHitPctView.setText("Hit % 0.000");
+        }
+// red pass average calculation
+        int redTotal = set.getRedOne() + 2*set.getRedTwo() + 3*set.getRedThree();
+        int redNum = set.getRedOne() + set.getRedTwo() + set.getRedThree() + set.getBlueStats().get("Ace");
+        if (redNum !=0){
+            double redPassAvg = redTotal/(double)redNum;
+            redPassAvgView.setText("Pass Avg " + String.format("%.2f", redPassAvg));
+        }
+        else{
+            redPassAvgView.setText("Pass Avg: N/A");
+        }
+// red earned % calculation
+        int redGood = set.getRedStats().get("Ace")  + set.getRedStats().get("Block")  + set.getRedStats().get("Kill");
+        if (set.getRedStats().get("redScore") != 0){
+            int redEarned = (int)(Math.round(redGood/(double)set.getRedStats().get("redScore")*100));
+            redEarnedPctView.setText("Earned " + redEarned + "%");
+        }
+
+// blue calculations
+// blue hit % calculation
+        if (set.getBlueAttack() != 0) {
+            double bluePct = (set.getBlueStats().get("Kill") - set.getRedStats().get("Opponent Attack Err")) / (double) set.getBlueAttack();
+
+            blueHitPctView.setText("Hit % " + String.format("%.3f", bluePct));
+        }
+        else{
+            blueHitPctView.setText("Hit % 0.000");
+        }
+ //blue pass average calculation
+        int blueTotal = set.getBlueOne() + 2*set.getBlueTwo() + 3*set.getBlueThree();
+        int blueNum = set.getBlueOne() + set.getBlueTwo() + set.getBlueThree() + set.getBlueStats().get("Ace");
+        if (blueNum !=0){
+            double bluePassAvg = blueTotal/(double)blueNum;
+            bluePassAvgView.setText("Pass Avg " + String.format("%.2f", bluePassAvg));
+        }
+        else{
+            bluePassAvgView.setText("Pass Avg: N/A");
+        }
+// blue earned % calculation
+        int blueGood = set.getBlueStats().get("Ace")  + set.getBlueStats().get("Block")  + set.getBlueStats().get("Kill");
+        if (set.getBlueStats().get("blueScore") != 0){
+            int blueEarned = (int)(Math.round(blueGood/(double)set.getBlueStats().get("blueScore")*100));
+            blueEarnedPctView.setText("Earned " + blueEarned + "%");
+        }
+
+
+
     }
 
     public void redScoreAction(View view){
@@ -271,7 +339,7 @@ private int setNum = 0;
     public void blueOppAttackErrAction(View view){
         // System.out.println("bluekill");
         set.getBlueStats().put("Opponent Attack Err", set.getBlueStats().get("Opponent Attack Err") + 1);
-        set.setBlueAttack(set.getBlueAttack() + 1);
+        set.setRedAttack(set.getRedAttack() + 1);
         set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
         Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Opp Atk Err", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
         set.addPoint(point, game.getUid());
