@@ -160,9 +160,9 @@ private int setNum = 0;
         blueOppAtkErrButton.setText("Opp\nAttack\nErr\n"+set.getBlueStats().get("Opponent Attack Err"));
         blueOppServeErrButton.setText("Opp\nServe\nErr\n"+set.getBlueStats().get("Opponent Serve Err"));
         blueOppOtherErrButton.setText("Opp\nOther\nErr\n"+set.getBlueStats().get("Opponent Err"));
-        blueOneButton.setText("1\n" + set.getBlueOne());
-        blueTwoButton.setText("2\n" + set.getBlueTwo());
-        blueThreeButton.setText("3\n" + set.getBlueThree());
+        blueOneButton.setText("1SR\n" + set.getBlueOne());
+        blueTwoButton.setText("2SR\n" + set.getBlueTwo());
+        blueThreeButton.setText("3SR\n" + set.getBlueThree());
     }
 
     public void redScoreAction(View view){
@@ -230,10 +230,82 @@ private int setNum = 0;
         set.setRedOne(set.getRedOne() + 1);
     }
     public void redTwoAction(View view){
-        set.setRedOne(set.getRedTwo() + 1);
+        set.setRedTwo(set.getRedTwo() + 1);
     }
     public void redThreeAction(View view){
-        set.setRedOne(set.getRedThree() + 1);
+        set.setRedThree(set.getRedThree() + 1);
+    }
+
+// Blue Actions
+    public void blueScoreAction(View view){
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+    public void blueAceAction(View view){
+        set.getBlueStats().put("Ace", set.getBlueStats().get("Ace") + 1);
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Ace", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+
+    public void blueBlockAction(View view){
+        // System.out.println("bluekill");
+        set.getBlueStats().put("Block", set.getBlueStats().get("Block") + 1);
+        set.setRedAttack(set.getRedAttack() + 1);
+        set.getBlueStats().put("Opponent Attack Err", set.getBlueStats().get("Opponent Attack Err") + 1);
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Block", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+    public void blueKillAction(View view){
+        // System.out.println("bluekill");
+        set.getBlueStats().put("Kill", set.getBlueStats().get("Kill") + 1);
+        set.setBlueAttack(set.getBlueAttack() + 1);
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Kill", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+
+    }
+
+    public void blueOppAttackErrAction(View view){
+        // System.out.println("bluekill");
+        set.getBlueStats().put("Opponent Attack Err", set.getBlueStats().get("Opponent Attack Err") + 1);
+        set.setBlueAttack(set.getBlueAttack() + 1);
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Opp Atk Err", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+
+    public void blueOppServeErrAction(View view){
+        // System.out.println("bluekill");
+        set.getBlueStats().put("Opponent Serve Err", set.getBlueStats().get("Opponent Serve Err") + 1);
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Opp Sv Err", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+    public void blueOppOtherErrAction(View view){
+        // System.out.println("bluekill");
+        set.getBlueStats().put("Opponent Err", set.getBlueStats().get("Opponent Err") + 1);
+        set.getBlueStats().put("blueScore", set.getBlueStats().get("blueScore") + 1);
+        Point point = new Point(set.getServe(), set.getBlueRotation(), set.getBlueRotation(), "blue", "Opp Err", set.getBlueStats().get("blueScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+    public void blueAtkAction(View view){
+        set.setBlueAttack(set.getBlueAttack() + 1);
+    }
+    public void blueDigAction(View view){
+        set.setBlueDigs(set.getBlueDigs() + 1);
+    }
+
+    public void blueOneAction(View view){
+        set.setBlueOne(set.getBlueOne() + 1);
+    }
+    public void blueTwoAction(View view){
+        set.setBlueTwo(set.getBlueTwo() + 1);
+    }
+    public void blueThreeAction(View view){
+        set.setBlueThree(set.getBlueThree() + 1);
     }
 
 
@@ -278,6 +350,45 @@ private int setNum = 0;
         }
         else if(id == R.id.redThree){
             redThreeAction(v);
+        }
+        // blue actions
+
+        if(id == R.id.blueScore){
+            blueScoreAction(v);
+        }
+        else if(id == R.id.blueAce){
+            blueAceAction(v);
+        }
+        else if(id == R.id.blueBlock){
+            blueBlockAction(v);
+        }
+        else if(id == R.id.blueKill){
+            blueKillAction(v);
+        }
+        else if(id == R.id.blueOppAttackErr){
+            blueOppAttackErrAction(v);
+        }
+        else if(id == R.id.blueOppServeErr){
+            blueOppServeErrAction(v);
+        }
+        else if(id == R.id.blueOppOtherErr){
+            blueOppOtherErrAction(v);
+        }
+        else if(id == R.id.blueAttack){
+            blueAtkAction(v);
+        }
+        else if(id == R.id.blueDig){
+            blueDigAction(v);
+        }
+
+        else if(id == R.id.blueOne){
+            blueOneAction(v);
+        }
+        else if(id == R.id.blueTwo){
+            blueTwoAction(v);
+        }
+        else if(id == R.id.blueThree){
+            blueThreeAction(v);
         }
 
 
