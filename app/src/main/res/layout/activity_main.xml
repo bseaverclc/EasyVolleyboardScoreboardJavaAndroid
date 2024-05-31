@@ -228,6 +228,7 @@
 
                         <Button
                             android:id="@+id/redKill"
+
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="33"
@@ -607,7 +608,7 @@
                             android:gravity="center"
                             >
                             <Button
-                                android:id="@+id/blueAtk"
+                                android:id="@+id/blueAttack"
                                 android:layout_height="match_parent"
                                 android:layout_width="0dp"
                                 android:text="ATK\n0"
@@ -711,7 +712,7 @@
                     >
 
                     <Button
-                        android:id="@+id/blueAttackErr"
+                        android:id="@+id/blueOppAttackErr"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="33"
@@ -726,7 +727,7 @@
                         />
 
                     <Button
-                        android:id="@+id/blueServeErr"
+                        android:id="@+id/blueOppServeErr"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="33"
@@ -739,7 +740,7 @@
                         android:padding="1dp"
                         />
                     <Button
-                        android:id="@+id/blueOtherErr"
+                        android:id="@+id/blueOppOtherErr"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="33"
