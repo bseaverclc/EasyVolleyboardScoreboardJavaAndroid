@@ -41,7 +41,7 @@ public class Game {
     private List<Integer> setWins = Arrays.asList(0, 0);
     private Date date;
     private List<ASet> sets;
-    private String uid;
+    private String uid = "";
     private boolean publicGame = true;
     private int intDate;
     private Integer type;

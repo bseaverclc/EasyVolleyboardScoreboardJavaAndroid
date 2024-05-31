@@ -210,7 +210,7 @@
                             android:backgroundTint="@color/red"
                             android:autoSizeTextType="uniform"
                             android:maxLines="2"
-                            android:padding="15dp"
+                            android:padding="5dp"
                             />
 
                         <Button
@@ -292,7 +292,7 @@
                             android:id="@+id/redScore"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:text="25"
+                            android:text="00"
                             android:maxLines="1"
                             android:layout_weight="40"
                             android:textColor="@color/black"
@@ -428,7 +428,7 @@
                     android:layout_height="0dp"
                     android:orientation="horizontal"
                     android:weightSum="100"
-                    android:layout_weight="10"
+                    android:layout_weight="12"
                     android:gravity="center"
                     >
 
@@ -441,7 +441,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
                         android:layout_margin="5dp"
-                        android:text="1"
+                        android:text="1SR\n0"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:backgroundTint="@color/yellow"
                         />
@@ -452,7 +453,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
                         android:layout_margin="5dp"
-                        android:text="2"
+                        android:text="2SR\n0"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:backgroundTint="@color/yellow"
                         />
@@ -462,7 +464,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
                         android:layout_margin="5dp"
-                        android:text="3"
+                        android:text="3SR\n0"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:backgroundTint="@color/yellow"
                         />
@@ -589,7 +592,7 @@
                             android:id="@+id/blueScore"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:text="25"
+                            android:text="00"
                             android:maxLines="1"
                             android:layout_weight="40"
                             android:textColor="@color/black"
@@ -658,7 +661,7 @@
                             android:backgroundTint="@color/blue"
                             android:autoSizeTextType="uniform"
                             android:maxLines="2"
-                            android:padding="15dp"
+                            android:padding="5dp"
                             />
 
                         <Button
@@ -773,7 +776,7 @@
                     android:layout_height="0dp"
                     android:orientation="horizontal"
                     android:weightSum="100"
-                    android:layout_weight="10"
+                    android:layout_weight="12"
                     android:gravity="center"
                     >
 
@@ -786,7 +789,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
                         android:layout_margin="5dp"
-                        android:text="1"
+                        android:text="1SR\n0"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:backgroundTint="@color/yellow"
 
@@ -799,7 +803,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
                         android:layout_margin="5dp"
-                        android:text="2"
+                        android:text="2SR\n0"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:backgroundTint="@color/yellow"
                         />
@@ -809,7 +814,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
                         android:layout_margin="5dp"
-                        android:text="3"
+                        android:text="3SR\n0"
+                        android:padding="2dp"
                         android:textColor="@color/black"
                         android:backgroundTint="@color/yellow"
                         />

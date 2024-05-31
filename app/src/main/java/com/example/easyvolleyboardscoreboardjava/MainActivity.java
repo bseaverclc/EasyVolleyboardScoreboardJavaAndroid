@@ -147,9 +147,9 @@ private int setNum = 0;
         redOppAtkErrButton.setText("Opp\nAttack\nErr\n"+set.getRedStats().get("Opponent Attack Err"));
         redOppServeErrButton.setText("Opp\nServe\nErr\n"+set.getRedStats().get("Opponent Serve Err"));
         redOppOtherErrButton.setText("Opp\nOther\nErr\n"+set.getRedStats().get("Opponent Err"));
-        redOneButton.setText("1\n" + set.getRedOne());
-        redTwoButton.setText("2\n" + set.getRedTwo());
-        redThreeButton.setText("3\n" + set.getRedThree());
+        redOneButton.setText("1SR\n" + set.getRedOne());
+        redTwoButton.setText("2SR\n" + set.getRedTwo());
+        redThreeButton.setText("3SR\n" + set.getRedThree());
 
         blueScoreButton.setText("" + set.getBlueStats().get("blueScore"));
         blueAceButton.setText("Ace\n"+set.getBlueStats().get("Ace"));
@@ -165,9 +165,16 @@ private int setNum = 0;
         blueThreeButton.setText("3\n" + set.getBlueThree());
     }
 
+    public void redScoreAction(View view){
+        set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
     public void redAceAction(View view){
         set.getRedStats().put("Ace", set.getRedStats().get("Ace") + 1);
         set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "Ace", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
     }
 
     public void redBlockAction(View view){
@@ -176,20 +183,69 @@ private int setNum = 0;
         set.setBlueAttack(set.getBlueAttack() + 1);
         set.getRedStats().put("Opponent Attack Err", set.getRedStats().get("Opponent Attack Err") + 1);
         set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
-
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "Block", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
     }
     public void redKillAction(View view){
        // System.out.println("redkill");
         set.getRedStats().put("Kill", set.getRedStats().get("Kill") + 1);
         set.setRedAttack(set.getRedAttack() + 1);
         set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "Kill", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
 
     }
+
+    public void redOppAttackErrAction(View view){
+        // System.out.println("redkill");
+        set.getRedStats().put("Opponent Attack Err", set.getRedStats().get("Opponent Attack Err") + 1);
+        set.setBlueAttack(set.getBlueAttack() + 1);
+        set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "Opp Atk Err", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+
+    public void redOppServeErrAction(View view){
+        // System.out.println("redkill");
+        set.getRedStats().put("Opponent Serve Err", set.getRedStats().get("Opponent Serve Err") + 1);
+        set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "Opp Sv Err", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+    public void redOppOtherErrAction(View view){
+        // System.out.println("redkill");
+        set.getRedStats().put("Opponent Err", set.getRedStats().get("Opponent Err") + 1);
+        set.getRedStats().put("redScore", set.getRedStats().get("redScore") + 1);
+        Point point = new Point(set.getServe(), set.getRedRotation(), set.getBlueRotation(), "red", "Opp Err", set.getRedStats().get("redScore") + "-" + set.getBlueStats().get("blueScore"));
+        set.addPoint(point, game.getUid());
+    }
+    public void redAtkAction(View view){
+        set.setRedAttack(set.getRedAttack() + 1);
+    }
+    public void redDigAction(View view){
+        set.setRedDigs(set.getRedDigs() + 1);
+    }
+
+    public void redOneAction(View view){
+        set.setRedOne(set.getRedOne() + 1);
+    }
+    public void redTwoAction(View view){
+        set.setRedOne(set.getRedTwo() + 1);
+    }
+    public void redThreeAction(View view){
+        set.setRedOne(set.getRedThree() + 1);
+    }
+
+
+
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.redAce){
+        if(id == R.id.redScore){
+            redScoreAction(v);
+        }
+        else if(id == R.id.redAce){
             redAceAction(v);
         }
         else if(id == R.id.redBlock){
@@ -198,6 +254,33 @@ private int setNum = 0;
         else if(id == R.id.redKill){
             redKillAction(v);
         }
+        else if(id == R.id.redOppAttackErr){
+            redOppAttackErrAction(v);
+        }
+        else if(id == R.id.redOppServeErr){
+            redOppServeErrAction(v);
+        }
+        else if(id == R.id.redOppOtherErr){
+            redOppOtherErrAction(v);
+        }
+        else if(id == R.id.redAttack){
+            redAtkAction(v);
+        }
+        else if(id == R.id.redDig){
+            redDigAction(v);
+        }
+
+        else if(id == R.id.redOne){
+            redOneAction(v);
+        }
+        else if(id == R.id.redTwo){
+            redTwoAction(v);
+        }
+        else if(id == R.id.redThree){
+            redThreeAction(v);
+        }
+
+
 
 
         updateScreen();

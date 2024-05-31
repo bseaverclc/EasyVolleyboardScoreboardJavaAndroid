@@ -35,6 +35,18 @@ public class Point {
         this.score = (String) dict.get("score");
     }
 
+    @Override
+    public String toString() {
+        return "Point{" +
+                "serve='" + serve + '\'' +
+                ", redRotation=" + redRotation +
+                ", blueRotation=" + blueRotation +
+                ", who='" + who + '\'' +
+                ", why='" + why + '\'' +
+                ", score='" + score + '\'' +
+                '}';
+    }
+
     // Getters and Setters (if needed)
 }
 
