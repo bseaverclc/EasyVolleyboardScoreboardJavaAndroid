@@ -19,9 +19,10 @@
             android:orientation="horizontal"
             android:layout_weight="7"
             android:weightSum="100"
+
             >
 
-
+<!--
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/setToggleBar"
                 android:layout_width="0dp"
@@ -30,63 +31,86 @@
                 android:weightSum="100"
                 app:singleSelection="true"
                 android:orientation="horizontal"
-                android:defaultFocusHighlightEnabled="true"
+                android:padding="5dp"
+
+                android:background="@color/black"
+
 
                 >
+                -->
 
-                <Button
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:foregroundTint="@color/black"
+                    android:background="@drawable/radio_group_background"
+                    >
+
+                <RadioButton
                     android:id="@+id/set1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="set 1"
-                    android:backgroundTint="@color/black"
+                    android:gravity="center"
                     android:layout_weight="20"
                     android:padding="1dp"
-
-
+                    android:button="@null"
+                    android:background="@drawable/radio_on"
                     />
-                <Button
-                    android:id="@+id/set2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="set 2"
-                    android:backgroundTint="@color/black"
-                    android:layout_weight="20"
-                    android:padding="1dp"
-                    />
-                <Button
-                    android:id="@+id/set3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="set 3"
-                    android:backgroundTint="@color/black"
-                    android:layout_weight="20"
-                    android:padding="1dp"
-                    />
-                <Button
-                    android:id="@+id/set4"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="set 4"
-                    android:backgroundTint="@color/black"
-                    android:layout_weight="20"
-                    android:padding="1dp"
-                    />
-                <Button
-                    android:id="@+id/set5"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="set 5"
-                    android:backgroundTint="@color/black"
-                    android:layout_weight="20"
-                    android:padding="1dp"
-                    />
+                    <RadioButton
+                        android:id="@+id/set2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="set 2"
+                        android:gravity="center"
+                        android:layout_weight="20"
+                        android:padding="1dp"
+                        android:button="@null"
+                        android:background="@drawable/radio_off"
+                        />
+                    <RadioButton
+                        android:id="@+id/set3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="set 3"
+                        android:gravity="center"
+                        android:layout_weight="20"
+                        android:padding="1dp"
+                        android:button="@null"
+                        android:background="@drawable/radio_off"
+                        />
+                    <RadioButton
+                        android:id="@+id/set4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="set 4"
+                        android:gravity="center"
+                        android:layout_weight="20"
+                        android:padding="1dp"
+                        android:button="@null"
+                        android:background="@drawable/radio_off"
+                        />
+                    <RadioButton
+                        android:id="@+id/set5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:text="set 5"
+                        android:gravity="center"
+                        android:layout_weight="20"
+                        android:padding="1dp"
+                        android:button="@null"
+                        android:background="@drawable/radio_off"
+                        />
 
 
+                </RadioGroup>
 
-
+<!--
             </com.google.android.material.button.MaterialButtonToggleGroup>
-
+-->
             <Button
                 android:id="@+id/newGame"
                 android:layout_width="0dp"

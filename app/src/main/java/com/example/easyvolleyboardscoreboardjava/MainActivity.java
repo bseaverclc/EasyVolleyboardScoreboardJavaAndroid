@@ -1,11 +1,14 @@
 package com.example.easyvolleyboardscoreboardjava;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,6 +17,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+private RadioButton set1,set2,set3,set4,set5;
 
 private Button redScoreButton;
 private Button redAceButton;
@@ -67,6 +71,18 @@ private int setNum = 0;
     }
 
     private void createButtons(){
+        set1 = findViewById(R.id.set1);
+        set1.setOnClickListener(this);
+        set2 = findViewById(R.id.set2);
+        set2.setOnClickListener(this);
+       set3 = findViewById(R.id.set3);
+        set3.setOnClickListener(this);
+       set4 = findViewById(R.id.set4);
+        set4.setOnClickListener(this);
+        set5 = findViewById(R.id.set5);
+        set5.setOnClickListener(this);
+
+
         redHitPctView = (TextView)findViewById(R.id.redHitPct);
         redPassAvgView = (TextView)findViewById(R.id.redPassAvg);
         redEarnedPctView = (TextView)findViewById(R.id.redEarnedPct);
@@ -382,6 +398,45 @@ private int setNum = 0;
     @Override
     public void onClick(View v) {
         int id = v.getId();
+
+            if(id == R.id.set1 || id == R.id.set2 || id == R.id.set3 || id == R.id.set4 || id == R.id.set5) {
+                System.out.println("set pressed");
+                set1.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_off));
+                set2.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_off));
+                set3.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_off));
+                set4.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_off));
+                set5.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_off));
+                if (id == R.id.set1){
+                    set1.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_on));
+                    set = game.getSets().get(0);
+                    setNum = 1;
+                }
+                if (id == R.id.set2){
+                    set2.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_on));
+                    set = game.getSets().get(1);
+                    setNum = 2;
+                }
+                if (id == R.id.set3){
+                    set3.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_on));
+                    set = game.getSets().get(2);
+                    setNum = 3;
+                }
+                if (id == R.id.set4){
+                    set4.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_on));
+                    set = game.getSets().get(3);
+                    setNum = 4;
+
+                }
+                if (id == R.id.set5){
+                    set5.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.radio_on));
+                    set = game.getSets().get(4);
+                    setNum = 5;
+
+                }
+            }
+
+
+
         if(id == R.id.redScore){
             redScoreAction(v);
         }
